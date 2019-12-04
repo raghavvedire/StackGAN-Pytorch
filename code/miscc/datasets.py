@@ -13,6 +13,11 @@ import pickle
 import random
 import numpy as np
 import pandas as pd
+import sys
+
+# from importlib import reload
+# reload(sys)
+#sys.setdefaultencoding('utf-8')
 
 from miscc.config import cfg
 
@@ -104,7 +109,7 @@ class TextDataset(data.Dataset):
             embedding_filename = '/skip-thought-embeddings.pickle'
 
         with open(data_dir + embedding_filename, 'rb') as f:
-            embeddings = pickle.load(f)
+            embeddings = pickle.load(f,encoding="latin-1")
             embeddings = np.array(embeddings)
             # embedding_shape = [embeddings.shape[-1]]
             print('embeddings: ', embeddings.shape)
